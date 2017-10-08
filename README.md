@@ -1,0 +1,1 @@
+# Blocipedia: a Wikipedia replica made with Rails.
