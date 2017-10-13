@@ -6,6 +6,6 @@ class User < ApplicationRecord
          
   has_many :wikis
   
-  before_save { self.role ||= :member }
+  after_initialize { self.role ||= :member }
   enum role: [:member, :admin]
 end
