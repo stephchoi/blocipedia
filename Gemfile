@@ -38,8 +38,11 @@
  # Style with Bootstrap
  gem 'bootstrap-sass'
  
- #User authentication
+ # User authentication
  gem 'devise'
+ 
+ # User Roles Pundit
+ gem 'pundit'
  
  group :development do
    gem 'listen', '~> 3.0.5'
