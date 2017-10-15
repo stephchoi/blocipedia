@@ -17,8 +17,8 @@ users= User.all
 25.times do
     Wiki.create!(
         user: users.sample,
-        title: Faker::HarryPotter.character + " " + Faker::HarryPotter.house,
-        body: Faker::HarryPotter.quote + " -" + Faker::HarryPotter.book
+        title: Faker::HarryPotter.character + Faker::HarryPotter.house,
+        body: Faker::HarryPotter.quote + Faker::HarryPotter.book
     )
 end
 

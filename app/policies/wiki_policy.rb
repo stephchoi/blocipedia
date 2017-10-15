@@ -7,10 +7,10 @@ class WikiPolicy < ApplicationPolicy
     end
     
     def destroy?
-        user.admin? or user == wiki.user
+        user.present? && (user.admin? or user == wiki.user)
     end
     
     def update?
-        user.admin? or user == wiki.user
+        user.present? && (user.admin? or user == wiki.user)
     end
 end
