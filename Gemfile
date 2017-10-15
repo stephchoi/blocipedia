@@ -44,6 +44,9 @@
  # User Roles Pundit
  gem 'pundit'
  
+ # Faker Seeding Data
+ gem 'faker'
+ 
  group :development do
    gem 'listen', '~> 3.0.5'
  end

@@ -2,20 +2,23 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 require 'random_data'
+require 'faker'
+
+Faker::UniqueGenerator.clear
 
 12.times do 
     User.create!(
-        email: RandomData.random_email,
-        password: RandomData.random_sentence 
+        email: Faker::Internet.unique.email,
+        password: Faker::Internet.password(6, 14) 
     )
 end
 users= User.all
 
-35.times do
+25.times do
     Wiki.create!(
         user: users.sample,
-        title: RandomData.random_sentence,
-        body: RandomData.random_paragraph
+        title: Faker::HarryPotter.character + " " + Faker::HarryPotter.house,
+        body: Faker::HarryPotter.quote + " -" + Faker::HarryPotter.book
     )
 end
 
