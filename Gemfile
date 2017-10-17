@@ -47,6 +47,10 @@
  # Faker Seeding Data
  gem 'faker'
  
+ # Stripe Verification of Credit Card Information
+ gem 'stripe'
+ gem 'figaro', '1.0'
+ 
  group :development do
    gem 'listen', '~> 3.0.5'
  end

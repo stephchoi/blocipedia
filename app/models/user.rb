@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :wikis
   
   after_initialize { self.role ||= :member }
-  enum role: [:member, :admin]
+  enum role: [:member, :premium, :admin]
 end
