@@ -1,3 +1,4 @@
+<div class="container">
 <h1><%= @wiki.title %></h1>
 
 <% if (@wiki.private && current_user && current_user!=@wiki.user) || @wiki.private && !current_user %>
@@ -5,7 +6,7 @@
 <% else %>
     <div class="row">
         <div class="col-md-8">
-            <p><%= @wiki.body %></p>
+            <%= markdown(@wiki.body) %>
             <small>
                 created by <%= @wiki.user.email %> at <%= @wiki.created_at %>
             </small>
@@ -19,3 +20,4 @@
         </div>
     </div>
 <% end %>
+</div>
