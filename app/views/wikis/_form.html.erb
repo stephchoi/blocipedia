@@ -4,4 +4,11 @@
       <%= f.check_box :private %> Private wiki
     <% end %>
   </div>
+  <div class="form-group">  
+    <% User.all.each do |collaborating_user| %>
+      <% next if collaborating_user == @wiki.user %>
+      <%= check_box_tag "wiki[collaborating_user_ids][]", collaborating_user.id, @wiki.collaborating_users.include?(collaborating_user), id: dom_id(collaborating_user) %>
+      <%= label_tag dom_id(collaborating_user), collaborating_user.email %><br>
+    <% end %>
+  </div>
 <% end %>

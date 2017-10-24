@@ -2,7 +2,7 @@ class WikisController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
     
     def index
-        @wikis = Wiki.all
+        @wikis = policy_scope(Wiki)
     end
     
     def show
@@ -41,6 +41,8 @@ class WikisController < ApplicationController
         @wiki.title = params[:wiki][:title]
         @wiki.body = params[:wiki][:body]
         @wiki.user = current_user
+        
+        @wiki.collaborating_user_ids = params[:wiki][:collaborating_user_ids]
         @wiki.private = params[:wiki][:private]
         
         if @wiki.save
@@ -62,5 +64,9 @@ class WikisController < ApplicationController
             flash.now[:alert] = "There was an error deleting the  wiki."
             render :show
         end
+    end
+    
+    def wiki_params
+       params.require(:wiki).permit(:collaborating_users, collaborating_user_ids: []) 
     end
 end

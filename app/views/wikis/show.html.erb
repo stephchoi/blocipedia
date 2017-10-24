@@ -1,4 +1,5 @@
 <div class="container">
+    
 <h1><%= @wiki.title %></h1>
 
 <% if (@wiki.private && current_user && current_user!=@wiki.user) || @wiki.private && !current_user %>
@@ -10,8 +11,15 @@
             <small>
                 created by <%= @wiki.user.email %> at <%= @wiki.created_at %>
             </small>
+            <br>
+            <br>
+            <h6>Collaborators:
+                <% @wiki.collaborating_users.each do |user| %>
+                    <%= user.email %> 
+                <% end %>
+            </h6>
         </div>
-    
+
         <div class="col-md-4">
             <% if policy(@wiki).update? %>
                 <%= link_to "Edit Wiki", edit_wiki_path, class: 'btn btn-success' %>
