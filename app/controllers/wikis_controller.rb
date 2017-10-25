@@ -42,7 +42,7 @@ class WikisController < ApplicationController
         @wiki.body = params[:wiki][:body]
         @wiki.user = current_user
         
-        @wiki.collaborating_user_ids = params[:wiki][:collaborating_user_ids]
+        @wiki.collaborating_users = User.find(params[:wiki][:collaborating_user_ids])
         @wiki.private = params[:wiki][:private]
         
         if @wiki.save
